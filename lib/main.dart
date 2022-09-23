@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:idiomas_app/generated/l10n.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,22 +15,17 @@ class MyApp extends StatelessWidget {
         // ... delegado[s] de localización específicos de la app aquí
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        S.delegate
       ],
-      supportedLocales: const [
-        Locale('en'), // Inglés
-        Locale('es'), // Español
-        Locale.fromSubtags(
-            languageCode:
-                'zh'), // Chino *Mira Localizaciones avanzadas más abajo*
-        // ... otras regiones que la app soporte
-      ],
+      supportedLocales: S.delegate.supportedLocales,
       title: 'Material App',
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Material App Bar'),
         ),
-        body: const Center(
-          child: Text('Hello World'),
+        body: Center(
+          child: Text(S.of(context).simpleText),
         ),
       ),
     );
